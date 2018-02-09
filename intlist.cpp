@@ -11,14 +11,22 @@ using std::cout;
 // copy constructor
 IntList::IntList(const IntList& source) {// ERR if source is null
 	Node* tempThis  = first;
+	tempThis->info  = 0;
+	tempThis->next  = NULL;
 	Node* tempOther = source.first;
+// cout<<tempOther->info<<std::endl;
     while(tempOther!=NULL)
     {
     	tempThis->info = tempOther->info;
-    	tempThis->next = tempOther->next;
+    	cout<<tempOther->info<<std::endl;
+    	if(tempOther->next!=NULL)
+    	{
+    		tempThis->next = new Node;
+    		tempThis       = tempThis->next;
+    	}
     	tempOther      = tempOther->next;
-    	tempThis       = tempThis->next;
     }
+
     return;
 }
 
