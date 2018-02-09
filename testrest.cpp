@@ -46,20 +46,24 @@ void test_assignmentOperator(){
     for(int i = 0; i<5; i++){
         list1.append(arr[i]);
     }
+    // cout<<"hey"<<std::endl;
     for(int i = 0; i<5; i++){
         list2.append(2*arr[i]);
     }
+    // cout<<"hey"<<std::endl;
     list2 = list1;
-
+    // cout<<"hey"<<std::endl;
+    ////////////////////////////////
     assert(list2.sum()==list1.sum());
-
+// cout<<"hey"<<std::endl;
     list1.append(100);
+    // cout<<"hey"<<std::endl;
     assert((list2.sum()+100) == list1.sum());
-
+    // cout<<"hey"<<std::endl;
     list1 = IntList();
     assert(list1.sum() == 0);
     assert(list1.count() == 0);
-
+    // cout<<"hey"<<std::endl;
 
 }
 

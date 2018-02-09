@@ -113,15 +113,26 @@ IntList& IntList::operator=(const IntList& source){// ERR is it actually adding 
     	delete deleteThis;
     	deleteThis = first;
     }
-
-    Node* tempThis  = first;
+   // cout<<"hey"<<std::endl;
+    first = new Node;
+	Node* tempThis  = first;
+	// cout<<"hey"<<std::endl;
+	tempThis->info  = 0;
+// cout<<"hey"<<std::endl;
+	tempThis->next  = NULL;
+// cout<<"hey2"<<std::endl;
 	Node* tempOther = source.first;
+// cout<<tempOther->info<<std::endl;
     while(tempOther!=NULL)
     {
     	tempThis->info = tempOther->info;
-    	tempThis->next = tempOther->next;
-    	tempOther      = tempOther->next;
-    	tempThis       = tempThis->next;
+    	// cout<<tempOther->info<<std::endl;
+    	if(tempOther->next!=NULL)
+    	{
+    		tempThis->next = new Node;
+    		tempThis       = tempThis->next;
+    	}
+    	tempOther = tempOther->next;
     }
     return *this;
 }
