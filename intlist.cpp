@@ -121,7 +121,6 @@ IntList& IntList::operator=(const IntList& source){
     	delete deleteThis;
     	deleteThis = first;
     }
-   // cout<<"hey"<<std::endl;
     
     first = new Node;
     first->info = 0;
@@ -129,11 +128,9 @@ IntList& IntList::operator=(const IntList& source){
 	Node* tempThis  = first;
 
 	Node* tempOther = source.first;
-// cout<<tempOther->info<<std::endl;
     while(tempOther!=NULL)
     {
     	tempThis->info = tempOther->info;
-    	// cout<<tempOther->info<<std::endl;
     	if(tempOther->next!=NULL)
     	{
     		tempThis->next = new Node;
