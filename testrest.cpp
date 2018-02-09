@@ -26,7 +26,7 @@ void test_copyconstructor(){
     assert(list1.count()== 10);
 // cout<<list2.count()<<"     2"<<endl;
     assert(list2.count()== 5);
-    // cout<<list2.count()<<"     2"<<endl;
+    cout<<list2.count()<<"     2"<<endl;
 }
 
 
@@ -54,6 +54,8 @@ void test_assignmentOperator(){
     list2 = list1;
     // cout<<"hey"<<std::endl;
     ////////////////////////////////
+    // cout<<list1.sum()<<std::endl;
+    // cout<<list2.sum()<<std::endl;
     assert(list2.sum()==list1.sum());
 // cout<<"hey"<<std::endl;
     list1.append(100);
@@ -62,6 +64,7 @@ void test_assignmentOperator(){
     // cout<<"hey"<<std::endl;
     list1 = IntList();
     assert(list1.sum() == 0);
+    cout<<list1.count()<<std::endl;
     assert(list1.count() == 0);
     // cout<<"hey"<<std::endl;
 

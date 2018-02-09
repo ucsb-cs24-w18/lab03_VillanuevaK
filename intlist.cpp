@@ -9,22 +9,24 @@ using std::cout;
 
 
 // copy constructor
-IntList::IntList(const IntList& source) {// ERR if source is null
+/*
+Remember to assign stuff first in copy constructor!!!
+*/
+IntList::IntList(const IntList& source) {
+	first = new Node;
+	first->info  = 0;
+	first->next  = NULL;
 	Node* tempThis  = first;
-	tempThis->info  = 0;
-	tempThis->next  = NULL;
 	Node* tempOther = source.first;
-// cout<<tempOther->info<<std::endl;
     while(tempOther!=NULL)
     {
     	tempThis->info = tempOther->info;
-    	cout<<tempOther->info<<std::endl;
     	if(tempOther->next!=NULL)
     	{
     		tempThis->next = new Node;
     		tempThis       = tempThis->next;
     	}
-    	tempOther      = tempOther->next;
+    	tempOther = tempOther->next;
     }
 
     return;
@@ -45,6 +47,7 @@ IntList::~IntList() {
 
 // return sum of values in list
 int IntList::sum() const {
+	if(!first)	return 0;
 	Node* temp = first;
 	int sum = 0;
 	while(temp!=NULL)
@@ -105,7 +108,12 @@ void IntList::insertFirst(int value) {
 
 //Assignment operator should copy the list from the source
 //to this list, deleting/replacing any existing nodes
-IntList& IntList::operator=(const IntList& source){// ERR is it actually adding all the necesaary stuff?
+IntList& IntList::operator=(const IntList& source){
+	if(!(source.first)) 
+	{
+		first = NULL;
+		return *this;
+	}
     Node* deleteThis = first;
     while(first!=NULL)
     {
@@ -114,13 +122,12 @@ IntList& IntList::operator=(const IntList& source){// ERR is it actually adding 
     	deleteThis = first;
     }
    // cout<<"hey"<<std::endl;
+    
     first = new Node;
+    first->info = 0;
+    first->next  = NULL;
 	Node* tempThis  = first;
-	// cout<<"hey"<<std::endl;
-	tempThis->info  = 0;
-// cout<<"hey"<<std::endl;
-	tempThis->next  = NULL;
-// cout<<"hey2"<<std::endl;
+
 	Node* tempOther = source.first;
 // cout<<tempOther->info<<std::endl;
     while(tempOther!=NULL)
@@ -134,6 +141,7 @@ IntList& IntList::operator=(const IntList& source){// ERR is it actually adding 
     	}
     	tempOther = tempOther->next;
     }
+    tempThis->next  = NULL;
     return *this;
 }
 
@@ -177,6 +185,7 @@ void IntList::print() const {
 
 // return count of values
 int IntList::count() const {
+	// if(!first) return 0;
     int result = 0;
     Node *n = first;
     while (n) {
